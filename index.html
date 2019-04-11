@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asteroids</title>
+</head>
+<body>
+    <canvas id="space" width="500" height="500" style="border: 1px solid;"></canvas>
+    <script>
+
+        const space = document.getElementById("space");
+        const spaceCtx = space.getContext("2d");
+        const speed =  1;
+
+        let rect = {
+            positionX: 0,
+            positionY: 0,
+            width: 20,
+            height: 20
+        };
+
+        let main = function() {
+            drawObjects(rect);
+            requestAnimationFrame(main);
+        };
+
+        let updateObjects = function(objects) {
+            objects.positionX += speed;
+        };
+
+        let jump = function() {
+            console.log("ok");
+        };
+
+        let drawObjects = function(objects) {
+            spaceCtx.clearRect(0,0, spaceCtx.canvas.width, spaceCtx.canvas.width);
+
+            spaceCtx.beginPath();
+            spaceCtx.fillStyle = "#FF0000";
+            spaceCtx.fillRect(objects.positionX,objects.positionY,objects.width,objects.height);
+            updateObjects(objects);
+        };
+        
+        main();
+
+        document.getElementById("space").addEventListener("click", jump);
+
+    </script>
+</body>
+</html>
